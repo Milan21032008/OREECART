@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}Text to Video -Oree Text to Media Generator{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title mb-0">
+                    <i class="fas fa-video me-2"></i>Text to Video Generator
+                </h3>
+                <p class="card-text mt-2 mb-0">Create engaging videos from your text content</p>
+            </div>
+            <div class="card-body">
+                <form method="POST" id="videoForm">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="mb-4">
+                        {{ form.text.label(class="form-label") }}
+                        {{ form.text(class="form-control" + (" is-invalid" if form.text.errors else "")) }}
+                        {% if form.text.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.text.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">
+                            <span id="charCount">0</span> / 1000 characters
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            {{ form.background_color.label(class="form-label") }}
+                            <div class="input-group">
+                                {{ form.background_color(class="form-select", id="bgColorSelect") }}
+                                <span class="input-group-text">
+                                    <div id="bgColorPreview" style="width: 20px; height: 20px; background-color: #000000; border: 1px solid #ccc;"></div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.text_color.label(class="form-label") }}
+                            <div class="input-group">
+                                {{ form.text_color(class="form-select", id="textColorSelect") }}
+                                <span class="input-group-text">
+                                    <div id="textColorPreview" style="width: 20px; height: 20px; background-color: #FFFFFF; border: 1px solid #ccc;"></div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        {{ form.duration.label(class="form-label") }}
+                        {{ form.duration(class="form-select") }}
+                        <div class="form-text">
+                            Choose how long the video should display the text
+                        </div>
+                    </div>
+                    
+                    <!-- Preview -->
+                    <div class="mb-4">
+                        <label class="form-label">Preview</label>
+                        <div id="videoPreview" class="border rounded p-4 text-center" style="height: 200px; background-color: #000000; color: #FFFFFF; display: flex; align-items: center; justify-content: center;">
+                            <span id="previewText">Your text will appear here...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-success btn-lg", id="generateBtn") }}
+                    </div>
+                </form>
+                
+                <!-- Loading indicator -->
+                <div id="loadingIndicator" class="text-center mt-4" style="display: none;">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Generating video... This may take up to a minute.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Instructions -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-info-circle me-2"></i>Video Creation Guide
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 text-center mb-3">
+                        <i class="fas fa-edit fa-2x text-primary mb-2"></i>
+                        <h6>1. Add Text</h6>
+                        <small class="text-muted">Enter the text to display in your video</small>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <i class="fas fa-palette fa-2x text-success mb-2"></i>
+                        <h6>2. Choose Colors</h6>
+                        <small class="text-muted">Select background and text colors for your video</small>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+                        <h6>3. Set Duration</h6>
+                        <small class="text-muted">Choose how long the video should be</small>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <i class="fas fa-download fa-2x text-info mb-2"></i>
+                        <h6>4. Download</h6>
+                        <small class="text-muted">Generate and download your MP4 video</small>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <h6><i class="fas fa-lightbulb me-2"></i>Tips for better videos:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Keep text concise for better readability</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Use high contrast colors (e.g., white text on black background)</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Longer durations work better for more text</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Videos are generated in 1280x720 HD resolution</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const textArea = document.getElementById('text');
+    const charCount = document.getElementById('charCount');
+    const bgColorSelect = document.getElementById('bgColorSelect');
+    const textColorSelect = document.getElementById('textColorSelect');
+    const bgColorPreview = document.getElementById('bgColorPreview');
+    const textColorPreview = document.getElementById('textColorPreview');
+    const videoPreview = document.getElementById('videoPreview');
+    const previewText = document.getElementById('previewText');
+    const form = document.getElementById('videoForm');
+    const generateBtn = document.getElementById('generateBtn');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    
+    // Character counter
+    function updateCharCount() {
+        const count = textArea.value.length;
+        charCount.textContent = count;
+        
+        if (count > 1000) {
+            charCount.parentElement.classList.add('text-danger');
+        } else {
+            charCount.parentElement.classList.remove('text-danger');
+        }
+    }
+    
+    // Update preview
+    function updatePreview() {
+        const text = textArea.value || 'Your text will appear here...';
+        const bgColor = bgColorSelect.value;
+        const textColor = textColorSelect.value;
+        
+        previewText.textContent = text;
+        videoPreview.style.backgroundColor = bgColor;
+        videoPreview.style.color = textColor;
+        
+        // Update color preview squares
+        bgColorPreview.style.backgroundColor = bgColor;
+        textColorPreview.style.backgroundColor = textColor;
+    }
+    
+    // Event listeners
+    textArea.addEventListener('input', function() {
+        updateCharCount();
+        updatePreview();
+    });
+    
+    bgColorSelect.addEventListener('change', updatePreview);
+    textColorSelect.addEventListener('change', updatePreview);
+    
+    // Initial updates
+    updateCharCount();
+    updatePreview();
+    
+    // Form submission with loading indicator
+    form.addEventListener('submit', function() {
+        generateBtn.disabled = true;
+        generateBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Generating Video...';
+        loadingIndicator.style.display = 'block';
+    });
+});
+</script>
+{% endblock %}
