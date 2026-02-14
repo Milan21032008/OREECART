@@ -1,1 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💘 Our LOVE STORY </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Montserrat:wght@300;500;700&display=swap');
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 30% 40%, #1d0a0a, #0b0202);
+            color: #fff5f5;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* Password Overlay - with romantic styling */
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 2, 2, 0.97);
+            backdrop-filter: blur(12px);
+            z-index: 20000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease;
+        }
+
+        .password-card {
+            background: linear-gradient(145deg, #1f0a0a, #0f0303);
+            border: 2px solid #ff6b9d;
+            border-radius: 60px 60px 30px 30px;
+            padding: 35px 25px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 80px #ff3366, 0 0 20px rgba(255, 80, 80, 0.6) inset;
+            text-align: center;
+            border: 1px solid rgba(255, 180, 180, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .password-card::before {
+            content: "💞";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 80px;
+            opacity: 0.15;
+            transform: rotate(-20deg);
+            pointer-events: none;
+        }
+
+        .password-card::after {
+            content: "💞";
+            position: absolute;
+            bottom: -25px;
+            right: -20px;
+            font-size: 90px;
+            opacity: 0.15;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        .password-card h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #ffe0f0;
+            margin-bottom: 8px;
+            text-shadow: 0 0 30px #ff69b4;
+            letter-spacing: 2px;
+        }
+
+        .password-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ffb6d9;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #ff99aa;
+            padding-bottom: 15px;
+            text-shadow: 0 0 20px red;
+        }
+
+        .password-card input {
+            width: 85%;
+            padding: 18px 20px;
+            font-size: 1.4rem;
+            border-radius: 60px;
+            border: none;
+            background: #2d1212;
+            color: #ffd9d9;
+            text-align: center;
+            letter-spacing: 4px;
+            border: 2px solid #ff8888;
+            outline: none;
+            margin-bottom: 25px;
+            font-weight: 600;
+            box-shadow: 0 0 30px #ff4d4d;
+        }
+
+        .password-card button {
+            background: radial-gradient(circle at 30% 20%, #ffb347, #b3476b);
+            border: 3px solid #ffe0f0;
+            color: #1f0303;
+            padding: 16px 40px;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 80px;
+            font-family: 'Great Vibes', cursive;
+            box-shadow: 0 0 50px #ff69b4;
+            cursor: pointer;
+            transition: 0.2s;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 #ffb6c1;
+        }
+
+        .password-card button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 70px #ff1493;
+        }
+
+        .wrong-pass {
+            color: #ffb0b0;
+            margin-top: 20px;
+            font-size: 1.3rem;
+            display: none;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 0 0 10px red;
+        }
+
+        /* ----- FLOATING 3D HEARTS (CINEMATIC) ----- */
+        .heart-universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart-particle {
+            position: absolute;
+            bottom: -20px;
+            color: rgba(255, 70, 100, 0.5);
+            font-size: 22px;
+            filter: drop-shadow(0 0 8px rgba(255, 30, 70, 0.7));
+            animation: floatSideways 14s infinite ease-in-out;
+        }
+
+        @keyframes floatSideways {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(-55vh) translateX(30px) rotate(180deg) scale(1.4);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-110vh) translateX(-20px) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* ----- MAIN WRAP ----- */
+        .anniversary-saga {
+            position: relative;
+            z-index: 20;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 12px 12px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ----- COUPLE TITLE (GLASSMORPHISM) ----- */
+        .hero-title {
+            text-align: center;
+            margin-bottom: 25px;
+            backdrop-filter: blur(8px);
+            background: rgba(10, 0, 0, 0.25);
+            padding: 25px 15px;
+            border-radius: 50px 50px 20px 20px;
+            border: 1px solid rgba(255, 120, 120, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            width: 100%;
+        }
+
+        .glow-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            background: linear-gradient(145deg, #ffe0e0, #ffb6b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px #ff4d4d, 0 0 60px #b30000;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        .sub {
+            font-size: 1.1rem;
+            color: #ffd9d9;
+            letter-spacing: 3px;
+            word-spacing: 5px;
+            text-transform: uppercase;
+            background: rgba(255,60,60,0.1);
+            padding: 5px 12px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        /* ----- 3D TIMELINE COUNTER (LUXURY) ----- */
+        .eternity-panel {
+            background: rgba(30, 5, 5, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 140, 140, 0.5);
+            border-radius: 40px;
+            padding: 22px 12px;
+            margin: 10px 0 35px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 25px 40px -10px black, 0 0 0 2px rgba(255,80,80,0.1) inset;
+            transform: perspective(800px) rotateX(1deg);
+        }
+
+        .since-badge {
+            font-size: 0.9rem;
+            color: #ffcaca;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .cosmic-timer {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffe9e9, #ffd6d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.4;
+            text-shadow: 0 0 20px red;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px 0;
+        }
+
+        .tiny-unit {
+            font-size: 0.85rem;
+            color: #ffaaaa;
+            font-weight: 300;
+            margin-left: 3px;
+        }
+
+        /* ----- 3D PHOTO CAROUSEL (ADVANCED) - MOBILE FIX ----- */
+        .carousel-dimension {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0 30px;
+            perspective: 1000px;
+            overflow-x: visible;
+        }
+
+        .love-sphere {
+            width: 170px;
+            height: 220px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: orbit 22s infinite cubic-bezier(0.45, 0.05, 0.2, 0.99);
+        }
+
+        @keyframes orbit {
+            0% { transform: rotateY(0deg) rotateX(3deg); }
+            50% { transform: rotateY(180deg) rotateX(1deg); }
+            100% { transform: rotateY(360deg) rotateX(3deg); }
+        }
+
+        .photo-card-3d {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 245, 245, 0.9);
+            box-shadow: 0 10px 30px rgba(180, 0, 0, 0.7);
+            transition: all 0.3s ease;
+            backface-visibility: visible;
+        }
+
+        .photo-card-3d img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.5s;
+        }
+
+        /* mobile adjusted translateZ */
+        .p1 { transform: rotateY(0deg) translateZ(150px); }
+        .p2 { transform: rotateY(72deg) translateZ(150px); }
+        .p3 { transform: rotateY(144deg) translateZ(150px); }
+        .p4 { transform: rotateY(216deg) translateZ(150px); }
+        .p5 { transform: rotateY(288deg) translateZ(150px); }
+
+        .carousel-caption {
+            margin-top: 30px;
+            font-size: 1rem;
+            font-style: italic;
+            color: #ffdbdb;
+            background: rgba(0,0,0,0.35);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+            border: 1px dashed #ff8585;
+            text-align: center;
+            width: 90%;
+        }
+
+        /* ----- MEMORY STACK (FULL IMAGE — ABSOLUTELY NO CROP) ----- */
+        .memory-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            width: 100%;
+            max-width: 500px;
+            margin: 45px 0 15px;
+        }
+
+        .memory-card-luxury {
+            background: rgba(17, 5, 5, 0.7);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 180, 180, 0.25);
+            border-radius: 30px;
+            padding: 16px;
+            box-shadow: 0 25px 35px -10px black;
+            transform: translateY(40px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .memory-card-luxury.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image displays fully, no cropping */
+        .memory-card-luxury img {
+            width: 100%;
+            height: auto;
+            max-height: none;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 22px;
+            border: 3px solid rgba(255, 200, 200, 0.6);
+            box-shadow: 0 10px 30px #330000;
+            background: #1a0808;
+        }
+
+        .memory-quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            margin-top: 16px;
+            color: #ffe0e0;
+            text-shadow: 0 0 10px rgba(255, 80, 80, 0.8);
+            background: linear-gradient(to right, #ffc0c0, #ffe0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.3;
+            padding: 0 8px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* ----- LOVE LETTER (CINEMATIC TYPEWRITER) ----- */
+        .letter-sanctum {
+            background: rgba(12, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid #b34d4d;
+            border-radius: 30px;
+            padding: 30px 20px;
+            margin: 55px 0 25px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 30px 60px #200000, 0 0 0 2px rgba(255, 100, 100, 0.2) inset;
+            position: relative;
+        }
+
+        .letter-sanctum::before {
+            content: "💌";
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-size: 42px;
+            opacity: 0.4;
+            transform: rotate(-15deg);
+        }
+
+        .typewriter-canvas {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #fff0f0;
+            font-weight: 400;
+            text-shadow: 0 0 6px #ffa0a0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cursor-glow {
+            display: inline-block;
+            width: 3px;
+            height: 1.2rem;
+            background: #ff7979;
+            margin-left: 4px;
+            vertical-align: middle;
+            box-shadow: 0 0 15px #ff3b3b;
+            animation: pulseBlink 0.9s infinite;
+        }
+
+        @keyframes pulseBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        /* ----- GIFT EXPLOSION (3D) ----- */
+        .gift-throne {
+            margin: 30px 0 20px;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .royal-gift-btn {
+            background: radial-gradient(circle at 30% 20%, #ffc107, #b8860b);
+            border: 4px solid #ffdab9;
+            color: #2d0a0a;
+            padding: 15px 35px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            border-radius: 80px;
+            letter-spacing: 3px;
+            box-shadow: 0 15px 40px #ffaa33, 0 0 40px #ffae42;
+            transform: scale(1);
+            transition: 0.2s;
+            cursor: pointer;
+            font-family: 'Great Vibes', cursive;
+            text-shadow: 2px 2px 0 #ffe0e0;
+            white-space: nowrap;
+        }
+
+        .royal-gift-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px #ffb347, 0 0 80px #ff8c00;
+        }
+
+        .royal-gift-btn:active {
+            transform: scale(0.96);
+        }
+
+        #final-message-reveal {
+            display: none;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.4rem;
+            background: linear-gradient(145deg, #ffe5b4, #ffdead);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 25px;
+            text-shadow: 0 0 40px #ffbb00, 0 0 80px #ff8800;
+            animation: revealPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+            width: 100%;
+        }
+
+        @keyframes revealPop {
+            0% { opacity: 0; transform: scale(0.2) rotate(-30deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0); }
+        }
+
+        /* ----- CONFETTI + BALLOONS (PREMIUM) ----- */
+        .confetti-premium {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            top: -20px;
+            z-index: 9999;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            animation: drop linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes drop {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(120vh) rotate(900deg); opacity: 0.3; }
+        }
+
+        .balloon-luxury {
+            position: fixed;
+            bottom: -150px;
+            width: 45px;
+            height: 60px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            z-index: 9998;
+            animation: flyUpwards linear forwards;
+            box-shadow: inset -8px -8px 12px rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+
+        .balloon-luxury::after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background: rgba(255,220,220,0.8);
+            transform: translateX(-50%);
+        }
+
+        @keyframes flyUpwards {
+            0% { transform: translateY(0) rotate(3deg); opacity: 0.9; }
+            100% { transform: translateY(-130vh) rotate(-12deg); opacity: 0.3; }
+        }
+
+        /* ----- RESPONSIVE EXTRA SMALL ( < 400 ) ----- */
+        @media (max-width: 400px) {
+            .glow-name { font-size: 2.5rem; }
+            .cosmic-timer { font-size: 1.3rem; }
+            .love-sphere { width: 140px; height: 180px; }
+            .p1 { transform: rotateY(0deg) translateZ(120px); }
+            .p2 { transform: rotateY(72deg) translateZ(120px); }
+            .p3 { transform: rotateY(144deg) translateZ(120px); }
+            .p4 { transform: rotateY(216deg) translateZ(120px); }
+            .p5 { transform: rotateY(288deg) translateZ(120px); }
+            .memory-quote { font-size: 1.3rem; }
+            .royal-gift-btn { font-size: 1.5rem; padding: 12px 20px; }
+            .sub { font-size: 0.9rem; letter-spacing: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PASSWORD OVERLAY - SURPRISE FOR MY WIFE REKHU -->
+    <div class="password-overlay" id="passwordOverlay">
+        <div class="password-card">
+            <h2>💖 Surprise 💖</h2>
+            <h3>For My Wife Rekhu</h3>
+            <input type="password" id="passInput" placeholder="Enter Password" maxlength="20">
+            <button onclick="checkPassword()">Unlock</button>
+            <div class="wrong-pass" id="wrongMsg">Wrong password, my love 💔 Try again</div>
+        </div>
+    </div>
+
+    <!-- 🎵 TUM HI HO - SHORT SONG (LOOP, VOLUME 20%) 🎵 -->
+    <audio id="romanticSong" loop>
+        <!-- Short version of Tum Hi Ho (Arijit Singh) -->
+        <source src="https://pagalfree.com/musics/128-Tum%20Hi%20Ho%20-%20Aashiqui%202%20128%20Kbps.mp3" type="audio/mpeg">
+        <!-- Backup source -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="heart-universe" id="heartCosmos"></div>
+
+    <!-- MAIN CONTENT - initially hidden -->
+    <div class="anniversary-saga" id="mainContent" style="display: none;">
+
+        <!-- TITLE SECTION -->
+        <div class="hero-title">
+            <div class="glow-name">9th November 2021</div>
+            <span class="sub">💞 Our Infinity 💞</span>
+        </div>
+
+        <!-- COSMIC TIMER -->
+        <div class="eternity-panel">
+            <div class="since-badge">✨ SINCE THAT MAGICAL DAY ✨</div>
+            <div class="cosmic-timer" id="cosmicTimerDisplay">—</div>
+        </div>
+
+        <!-- 3D CAROUSEL OF LOVE (mobile optimized) -->
+        <div class="carousel-dimension">
+            <div class="love-sphere">
+                <div class="photo-card-3d p1"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600" alt="romantic"></div>
+                <div class="photo-card-3d p2"><img src="images/photo2.jpeg" alt="couple"></div>
+                <div class="photo-card-3d p3"><img src="images/photo3.jpeg" alt="roses"></div>
+                <div class="photo-card-3d p4"><img src="images/photo4.jpg" alt="dinner"></div>
+                <div class="photo-card-3d p5"><img src="images/photo5.jpeg" alt="love"></div>
+            </div>
+        </div>
+        <div class="carousel-caption">❤️ તું મારી જિંદગીની સૌથી કિંમતી ગિફ્ટ છે. 🎁 ❤️</div>
+
+        <!-- MEMORY CARDS (FULL IMAGE) -->
+        <div class="memory-stack">
+            <div class="memory-card-luxury">
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600" alt="memory1">
+                <div class="memory-quote">"Jab pehli baar mila tha tu, dil ne bas tera naam liya."</div>
+            </div>
+            <div class="memory-card-luxury">
+                <img src="images/photo2.jpeg" alt="memory2">
+                <div class="memory-quote">"Har pal tere sang – ek khubsurat khwab."</div>
+            </div>
+            <div class="memory-card-luxury">
+                <img src="images/photo3.jpeg" alt="memory3">
+                <div class="memory-quote">"Tere bina zindagi adhoori, tu mila toh duniya poori."</div>
+            </div>
+            <div class="memory-card-luxury">
+                <img src="images/photo4.jpg" alt="memory4">
+                <div class="memory-quote">"Har anniversary, tera pyaar pehle se zyada."</div>
+            </div>
+            <div class="memory-card-luxury">
+                <img src="images/photo5.jpeg" alt="memory5">
+                <div class="memory-quote">"Aane wali saadiyon mein bhi tu hi meri subah ho."</div>
+            </div>
+        </div>
+
+        <!-- TYPEWRITER LOVE LETTER -->
+        <div class="letter-sanctum">
+            <div class="typewriter-canvas" id="typewriterCanvas"></div>
+            <span class="cursor-glow"></span>
+        </div>
+
+        <!-- GRAND SURPRISE GIFT -->
+        <div class="gift-throne">
+            <button class="royal-gift-btn" onclick="unleashSurprise()">🎁 Aapka Gift</button>
+        </div>
+        <div id="final-message-reveal">Main hi toh hoon tumhara gift! 😘💝</div>
+
+        <div style="color: rgba(255,200,200,0.7); margin: 60px 0 30px; font-size: 1.1rem; letter-spacing: 3px; text-align: center;">
+            ─── ❤️ FOREVER YOURS ❤️ ───
+        </div>
+
+    </div>
+
+    <script>
+        // ----------------------------------------------------------------
+        // PASSWORD CHECK - REKHUMILU2008
+        // ----------------------------------------------------------------
+        const correctPassword = "REKHUMILU2008";
+        
+        window.checkPassword = function() {
+            const input = document.getElementById('passInput').value;
+            const overlay = document.getElementById('passwordOverlay');
+            const mainContent = document.getElementById('mainContent');
+            const wrongMsg = document.getElementById('wrongMsg');
+            
+            if (input === correctPassword) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    mainContent.style.display = 'flex'; // show main content
+                    // Start music when page is unlocked
+                    playMusic();
+                }, 600);
+            } else {
+                wrongMsg.style.display = 'block';
+                setTimeout(() => {
+                    wrongMsg.style.display = 'none';
+                }, 2000);
+            }
+        };
+
+        // Allow Enter key to submit
+        document.getElementById('passInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // ----------------------------------------------------------------
+        // MUSIC - TUM HI HO (20% volume)
+        // ----------------------------------------------------------------
+        const audio = document.getElementById('romanticSong');
+        audio.volume = 0.2; // low volume
+        
+        function playMusic() {
+            audio.play()
+                .then(() => console.log("Tum Hi Ho playing"))
+                .catch(e => console.log("Playback failed", e));
+        }
+        
+        // Also try on user interaction after unlock (safety)
+        document.body.addEventListener('click', function musicOnClick() {
+            if (overlay.style.display === 'none') {
+                audio.play();
+            }
+        }, { once: true });
+
+        // ----------------------------------------------------------------
+        // 1.  COSMIC TIMER (9 NOV 2021)
+        // ----------------------------------------------------------------
+        const anniversaryDate = new Date("2021-11-09T00:00:00");
+        function updateCosmicTimer() {
+            const now = new Date();
+            const diff = now - anniversaryDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const years = Math.floor(days / 365);
+            const months = Math.floor((days % 365) / 30);
+            const remainingDays = days % 30;
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("cosmicTimerDisplay").innerHTML = 
+                `${years}<span class="tiny-unit">Y</span>  ${months}<span class="tiny-unit">M</span>  ${remainingDays}<span class="tiny-unit">D</span>  •  ` +
+                `${hours.toString().padStart(2,'0')}<span class="tiny-unit">h</span>  ${minutes.toString().padStart(2,'0')}<span class="tiny-unit">m</span>  ${seconds.toString().padStart(2,'0')}<span class="tiny-unit">s</span>`;
+        }
+        setInterval(updateCosmicTimer, 1000);
+        updateCosmicTimer();
+
+        // ----------------------------------------------------------------
+        // 2.  TYPEWRITER – LOVE LETTER (LOOPING)
+        // ----------------------------------------------------------------
+        const loveNote = `My Dearest Valentine, 💕
+
+Pichle 4 saalon mein tumne mere har din ko rang diya hai. 
+9th November 2021 – woh din jab hum mil the, aur duniya badal gayi.
+
+Tum meri hansi, meri manzil, mera sukoon ho.
+Tumhare bina main adhoori hoon, aur tumhare saath main anant.
+
+I don't need forever, kyunki tum already meri eternity ho.
+Thank you for being my soulmate, my best friend, my pyaar.
+
+Yours, only yours...`; 
+
+        let typeIdx = 0;
+        const typeEl = document.getElementById('typewriterCanvas');
+        let typeInterval;
+
+        function startTyping() {
+            typeEl.innerHTML = '';
+            typeIdx = 0;
+            clearInterval(typeInterval);
+            typeInterval = setInterval(() => {
+                if (typeIdx < loveNote.length) {
+                    const ch = loveNote.charAt(typeIdx);
+                    typeEl.innerHTML += ch === '\n' ? '<br>' : ch;
+                    typeIdx++;
+                } else {
+                    clearInterval(typeInterval);
+                    setTimeout(startTyping, 5000);
+                }
+            }, 42);
+        }
+
+        const letterSection = document.querySelector('.letter-sanctum');
+        const typeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startTyping();
+                    typeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        typeObserver.observe(letterSection);
+
+        // ----------------------------------------------------------------
+        // 3.  SCROLL REVEAL (MEMORY CARDS)
+        // ----------------------------------------------------------------
+        const memoryCards = document.querySelectorAll('.memory-card-luxury');
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, { threshold: 0.15 });
+        memoryCards.forEach(card => cardObserver.observe(card));
+
+        // ----------------------------------------------------------------
+        // 4.  FLOATING HEARTS (PREMIUM)
+        // ----------------------------------------------------------------
+        function spawnHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-particle';
+            heart.innerHTML = ['❤️','🧡','💛','💚','💙','💜','🤍','🩷'][Math.floor(Math.random() * 8)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 24 + 14) + 'px';
+            heart.style.animationDuration = (Math.random() * 12 + 10) + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            document.getElementById('heartCosmos').appendChild(heart);
+            setTimeout(() => heart.remove(), 15000);
+        }
+        setInterval(spawnHeart, 350);
+
+        // ----------------------------------------------------------------
+        // 5.  SURPRISE – CONFETTI + BALLOONS + MESSAGE
+        // ----------------------------------------------------------------
+        function unleashSurprise() {
+            document.querySelector('.royal-gift-btn').style.display = 'none';
+            const finalMsg = document.getElementById('final-message-reveal');
+            finalMsg.style.display = 'block';
+
+            for (let i=0; i<150; i++) {
+                setTimeout(createConfetti, i * 7);
+            }
+            for (let i=0; i<35; i++) {
+                setTimeout(createBalloon, i * 40);
+            }
+        }
+
+        function createConfetti() {
+            const conf = document.createElement('div');
+            conf.classList.add('confetti-premium');
+            conf.style.left = Math.random() * 100 + '%';
+            conf.style.background = `hsl(${Math.random() * 40 + 340}, 100%, 65%)`;
+            conf.style.width = Math.random() * 12 + 6 + 'px';
+            conf.style.height = Math.random() * 12 + 6 + 'px';
+            conf.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 5000);
+        }
+
+        function createBalloon() {
+            const bal = document.createElement('div');
+            bal.classList.add('balloon-luxury');
+            bal.style.left = Math.random() * 100 + '%';
+            bal.style.background = `radial-gradient(circle at 30% 30%, ${['#ff6b6b','#ff9999','#ffb347','#ff69b4','#ffdab9'][Math.floor(Math.random()*5)]}, ${['#c41e1e','#b22222','#daa520','#c71585','#b8860b'][Math.floor(Math.random()*5)]})`;
+            bal.style.animationDuration = Math.random() * 5 + 6 + 's';
+            bal.style.width = Math.random() * 35 + 30 + 'px';
+            bal.style.height = Math.random() * 45 + 40 + 'px';
+            document.body.appendChild(bal);
+            setTimeout(() => bal.remove(), 12000);
+        }
+    </script>
+</body>
+</html>
